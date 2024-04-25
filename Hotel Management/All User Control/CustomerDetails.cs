@@ -46,5 +46,10 @@ namespace Hotel_Management.All_User_Control
             DataSet ds = fn.getData(query);
             dataGridView1.DataSource= ds.Tables[0];
         }
+
+        private void CustomerDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

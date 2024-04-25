@@ -41,12 +41,12 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.customerDetails1 = new Hotel_Management.All_User_Control.CustomerDetails();
             this.uC_Employee1 = new Hotel_Management.All_User_Control.UC_Employee();
             this.uC_CustomerCheckOut1 = new Hotel_Management.All_User_Control.UC_CustomerCheckOut();
             this.uC_CustomerRegistration1 = new Hotel_Management.All_User_Control.UC_CustomerRegistration();
             this.uC_AddRoom1 = new Hotel_Management.All_User_Control.UC_AddRoom();
-            this.customerDetails1 = new Hotel_Management.All_User_Control.CustomerDetails();
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
             // 
             // btnAddRoom
@@ -113,6 +113,7 @@
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // button6
             // 
@@ -153,6 +154,19 @@
             this.guna2Elipse5.BorderRadius = 30;
             this.guna2Elipse5.TargetControl = this;
             // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 30;
+            this.guna2Elipse4.TargetControl = this;
+            // 
+            // customerDetails1
+            // 
+            this.customerDetails1.BackColor = System.Drawing.Color.White;
+            this.customerDetails1.Location = new System.Drawing.Point(18, 142);
+            this.customerDetails1.Name = "customerDetails1";
+            this.customerDetails1.Size = new System.Drawing.Size(1307, 644);
+            this.customerDetails1.TabIndex = 12;
+            // 
             // uC_Employee1
             // 
             this.uC_Employee1.BackColor = System.Drawing.Color.White;
@@ -186,19 +200,6 @@
             this.uC_AddRoom1.TabIndex = 8;
             this.uC_AddRoom1.Visible = false;
             this.uC_AddRoom1.Load += new System.EventHandler(this.uC_AddRoom1_Load);
-            // 
-            // customerDetails1
-            // 
-            this.customerDetails1.BackColor = System.Drawing.Color.White;
-            this.customerDetails1.Location = new System.Drawing.Point(18, 142);
-            this.customerDetails1.Name = "customerDetails1";
-            this.customerDetails1.Size = new System.Drawing.Size(1307, 644);
-            this.customerDetails1.TabIndex = 12;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 30;
-            this.guna2Elipse4.TargetControl = this;
             // 
             // Dashboard
             // 

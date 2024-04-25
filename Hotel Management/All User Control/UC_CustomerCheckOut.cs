@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Hotel_Management.All_User_Control
 {
@@ -22,16 +24,16 @@ namespace Hotel_Management.All_User_Control
 
         private void UC_CustomerCheckOut_Load(object sender, EventArgs e)
         {
-            query = "select customer.cid, customer.cname, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout = 'NO'";
-            //query = "SELECT * from customer";
+            //query = "select customer.cid, customer.cname, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout = 'NO'";
+            query = "SELECT c.*, r.* FROM customer c INNER JOIN rooms r ON c.roomid = r.roomid WHERE c.chekout = 'NO'";
             DataSet ds = fn.getData(query);
             dataGridView1.DataSource = ds.Tables[0];
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            query = "select customer.cid, customer.cname, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where cname like '" + txtName.Text + "%' and checkout = 'NO'";
-            //query = "SELECT * from customer where cname like '\" + txtName.Text + \"%' ";
+            //query = "select customer.cid, customer.cname, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where cname like '" + txtName.Text + "%' and checkout = 'NO'";
+            query = "SELECT c.*, r.* FROM customer c INNER JOIN rooms r ON c.roomid = r.roomid WHERE c.Name LIKE '%search_name%' AND c.chekout = 'NO'";
             DataSet ds = fn.getData(query);
             dataGridView1.DataSource = ds.Tables[0];
         }

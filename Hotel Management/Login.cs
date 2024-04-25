@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Hotel_Management
 {
     public partial class Login : Form
     {
+        MyConnection db = new MyConnection();   //function == connect 
         public Login()
         {
             InitializeComponent();
@@ -29,6 +31,59 @@ namespace Hotel_Management
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
+            try
+            {
+                using (db.con_login)
+                {
+                    SqlCommand cmd_login = new SqlCommand("sp_role_login", db.con_login);
+                    cmd_login.CommandType = CommandType.StoredProcedure;
+                    db.con_login.Open();
+                    cmd_login.Parameters.AddWithValue("@uname",txtUsername.Text);
+                    cmd_login.Parameters.AddWithValue("@upass", txtPassword.Text);
+                    SqlDataReader rd = cmd_login.ExecuteReader();
+                    if(rd.HasRows)
+                    {
+                        rd.Read();
+
+                        if (rd[4].ToString() == "OP_ADMIN")
+                        {
+                            //function.type = "A";
+                            labelError.Visible = false;
+ 
+                            Dashboard ds = new Dashboard();
+                            this.Hide();
+                            ds.Show();
+
+                        }
+
+                        else if (rd[4].ToString() == "OP_NV")
+                        {
+                            labelError.Visible = false;
+                            //function.type = "NV";
+                            NV nv = new NV();
+                            this.Hide();
+                            nv.Show();
+                        }
+
+                        
+                    }
+                    else
+                    {
+                        labelError.Visible = true;
+                        txtUsername.Clear();
+                        txtPassword.Clear();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+
+            
+            /*
             if (txtUsername.Text == "admin" && txtPassword.Text == "admin")
             {
                 labelError.Visible = false;
@@ -44,6 +99,7 @@ namespace Hotel_Management
                 txtPassword.Clear();
 
             }
+            */
         }
     }   
     }
