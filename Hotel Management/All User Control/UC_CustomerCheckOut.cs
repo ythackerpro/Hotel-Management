@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Hotel_Management.All_User_Control
 {
@@ -19,7 +17,7 @@ namespace Hotel_Management.All_User_Control
 
         public UC_CustomerCheckOut()
         {
-            InitializeComponent();
+            InitializeComponent();  
 
         }
 
@@ -33,17 +31,7 @@ namespace Hotel_Management.All_User_Control
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    query = "SELECT cust.*, r.* FROM customer cust INNER JOIN rooms r ON cust.roomid = r.roomid WHERE cust.cname LIKE " + txtName.Text; //+ " AND cust.chekout = 'NO'";
-            //    //query = "SELECT * from customer where cname like '\" + txtName.Text + \"%' ";
-            //    DataSet ds = fn.getData(query);
-            //    dataGridView1.DataSource = ds.Tables[0];
-            //}
-            //catch(Exception ex)
-            //{
-            //    debugBox.Text = ex.Message;
-            //}
+
             string searchText = txtName.Text;
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
@@ -51,7 +39,7 @@ namespace Hotel_Management.All_User_Control
                 //if (string.IsNullOrEmpty(searchText))
 
                 if (row != null) // Check if the row itself is not null
-                {
+                {   
                     try
                     {
                         if (row.Cells["cname"] != null) // Check if the specific cell exists
@@ -84,39 +72,44 @@ namespace Hotel_Management.All_User_Control
                         Console.WriteLine("Error: Null reference encountered for cell 'cname' in a row.");
                         Console.WriteLine(ex.Message); // Provides more details about the exception
                     }
-
                 }
             }
         }
 
-        int id;
+        
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            //if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            //{
-            //    id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-            //    debugText2.Text = id.ToString();
-            //    txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            //    txtRoomNo.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
-            //}
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             if (txtCName.Text != "")
             {
-                if (MessageBox.Show("Are you Sure?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if(MessageBox.Show("Are you Sure?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    String cdate = txtCheckOutDate.Text;
-                    query = "update customer set chekout = 'YES', checkout = ' " + cdate + " ' where cid =" + id + " update rooms set booked = 'NO' where roomNo ='" + txtRoomNo.Text + "'";
-                    fn.setData(query, "Check Out Successfully. ");
-                    UC_CustomerCheckOut_Load(this, null);
+                    try
+                    {
+                        String cdate = txtCheckOutDate.Text;
+                        query = "UPDATE customer SET chekout = 'YES', checkout =" + " ' " + cdate + " ' " +"WHERE cid =" + id + " UPDATE rooms SET booked = 'NO' WHERE roomid =' " + int.Parse(txtRoomNo.Text.ToString()) + " ' ";
+                        UC_CustomerCheckOut_Load(this, null);
+
+                        fn.setData(query, "Check Out Successfully. ");
+                    }
+                    catch(Exception ex)
+                    {
+                        // Handle the case where the "id" cell is null (optional)
+                        // You can log the error or display a message to the user
+                        Console.WriteLine("Error: Null reference encountered for 'id' in a row.");
+                        Console.WriteLine(ex.Message); // Provides more details about the exception
+                    }
+                    
+
                 }
             }
             else
             {
-                MessageBox.Show("No Customer Selected.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No Customer Selected.","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -133,6 +126,7 @@ namespace Hotel_Management.All_User_Control
             clearAll();
         }
 
+        int id;
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0) // Check if a valid row was clicked
@@ -148,6 +142,7 @@ namespace Hotel_Management.All_User_Control
                     // Access data from the selected row
                     string selectedCustomerName = selectedRow.Cells["cname"].Value.ToString();
                     int selectedCustomerID = int.Parse(selectedRow.Cells["cid"].Value.ToString()); // Assuming "customerID" is an integer column
+                    id = selectedCustomerID;
                     //debugText2.Text = selectedCustomerID.ToString();
                     txtCName.Text = selectedCustomerName.ToString();
                     txtRoomNo.Text = selectedRow.Cells["roomid"].Value.ToString();
