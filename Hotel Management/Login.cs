@@ -13,7 +13,11 @@ namespace Hotel_Management
 {
     public partial class Login : Form
     {
-        MyConnection db = new MyConnection();   //function == connect 
+        MyConnection db = new MyConnection();   //function == connect
+                                                //
+        function fn = new function();
+        String query;
+
         public Login()
         {
             InitializeComponent();
@@ -31,6 +35,8 @@ namespace Hotel_Management
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            query = "select username, pass from employee where username = '" + txtUsername.Text + "' and pass = '" + txtPassword.Text + "'";
+            DataSet data_set = fn.getData(query);
             
             try
             {
@@ -68,6 +74,15 @@ namespace Hotel_Management
 
                         
                     }
+                    else if (data_set.Tables[0].Rows.Count != 0)
+                    {
+                        labelError.Visible = false;
+                        //function.type = "NV";
+                        NV nv = new NV();
+                        this.Hide();
+                        nv.Show();
+                    }
+
                     else
                     {
                         labelError.Visible = true;
