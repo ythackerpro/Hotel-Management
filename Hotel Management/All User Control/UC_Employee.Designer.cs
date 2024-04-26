@@ -252,6 +252,7 @@
             this.labelToSET.Size = new System.Drawing.Size(54, 25);
             this.labelToSET.TabIndex = 1;
             this.labelToSET.Text = "------";
+            this.labelToSET.Click += new System.EventHandler(this.labelToSET_Click);
             // 
             // label2
             // 
