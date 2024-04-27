@@ -80,7 +80,7 @@ namespace Hotel_Management.All_User_Control
                         // Handle the case where the "cname" cell is null (optional)
                         // You can log the error or display a message to the user
                         Console.WriteLine("Error: Null reference encountered for cell 'cname' in a row.");
-                        Console.WriteLine(ex.Message); // Provides more details about the exception
+                        MessageBox.Show(ex.Message); // Provides more details about the exception
                     }
                 }
             }
@@ -111,7 +111,7 @@ namespace Hotel_Management.All_User_Control
                         // Handle the case where the "id" cell is null (optional)
                         // You can log the error or display a message to the user
                         Console.WriteLine("Error: Null reference encountered for 'id' in a row.");
-                        Console.WriteLine(ex.Message); // Provides more details about the exception
+                        MessageBox.Show(ex.Message); // Provides more details about the exception
                     }
 
 

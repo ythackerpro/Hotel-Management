@@ -35,61 +35,84 @@ namespace Hotel_Management
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            query = "select username, pass from employee where username = '" + txtUsername.Text + "' and pass = '" + txtPassword.Text + "'";
-            DataSet data_set = fn.getData(query);
-            
             try
             {
-                using (db.con_login)
-                {
-                    SqlCommand cmd_login = new SqlCommand("sp_role_login", db.con_login);
-                    cmd_login.CommandType = CommandType.StoredProcedure;
-                    db.con_login.Open();
-                    cmd_login.Parameters.AddWithValue("@uname",txtUsername.Text);
-                    cmd_login.Parameters.AddWithValue("@upass", txtPassword.Text);
-                    SqlDataReader rd = cmd_login.ExecuteReader();
-                    if(rd.HasRows)
-                    {
-                        rd.Read();
+                query = "SELECT * FROM employee";
+                DataSet ds = fn.getData(query);
 
-                        if (rd[4].ToString() == "OP_ADMIN")
-                        {
-                            //function.type = "A";
-                            labelError.Visible = false;
+				string username = txtUsername.Text;
+				string password = txtPassword.Text;
+				bool foundMatch = false;
+
+				// Check if the DataSet has at least one table
+				if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+				{
+    			// Loop through rows in the first table (assuming only one table)
+    				foreach (DataRow row in ds.Tables[0].Rows)
+    				{
+        				string dbUsername = row["username"].ToString(); 
+        				string dbPassword = row["pass"].ToString(); 
+
+        				if (username == dbUsername && password == dbPassword)
+        				{
+            				MessageBox.Show("LOGIN!");
+            				foundMatch = true;
+            				break; // Stop iterating if a match is found (optional)
+        				}
+    				}
+    
+				}
+            
+                // using (db.con_login)
+                // {
+                //     SqlCommand cmd_login = new SqlCommand("sp_role_login", db.con_login);
+                //     cmd_login.CommandType = CommandType.StoredProcedure;
+                //     db.con_login.Open();
+                //     cmd_login.Parameters.AddWithValue("@uname",txtUsername.Text);
+                //     cmd_login.Parameters.AddWithValue("@upass", txtPassword.Text);
+                //     SqlDataReader rd = cmd_login.ExecuteReader();
+                //     if(rd.HasRows)
+                //     {
+                //         rd.Read();
+
+                //         if (rd[4].ToString() == "OP_ADMIN")
+                //         {
+                //             //function.type = "A";
+                //             labelError.Visible = false;
  
-                            Dashboard ds = new Dashboard();
-                            this.Hide();
-                            ds.Show();
+                //             Dashboard ds = new Dashboard();
+                //             this.Hide();
+                //             ds.Show();
 
-                        }
+                //         }
 
-                        else if (rd[4].ToString() == "OP_NV")
-                        {
-                            labelError.Visible = false;
-                            //function.type = "NV";
-                            NV nv = new NV();
-                            this.Hide();
-                            nv.Show();
-                        }
+                //         else if (rd[4].ToString() == "OP_NV")
+                //         {
+                //             labelError.Visible = false;
+                //             //function.type = "NV";
+                //             NV nv = new NV();
+                //             this.Hide();
+                //             nv.Show();
+                //         }
 
                         
-                    }
-                    if (data_set.Tables[0].Rows.Count != 0)
-                    {
-                        labelError.Visible = false;
-                        //function.type = "NV";
-                        NV nv = new NV();
-                        this.Hide();
-                        nv.Show();
-                    }
+                //     }
+                //     else if (data_set.Tables[0].Rows.Count != 0)
+                //     {
+                //         labelError.Visible = false;
+                //         //function.type = "NV";
+                //         NV nv = new NV();
+                //         this.Hide();
+                //         nv.Show();
+                //     }
 
-                    else
-                    {
-                        labelError.Visible = true;
-                        txtUsername.Clear();
-                        txtPassword.Clear();
-                    }
-                }
+                //     else
+                //     {
+                //         labelError.Visible = true;
+                //         txtUsername.Clear();
+                //         txtPassword.Clear();
+                //     }
+                // }
             }
             catch (Exception ex)
             {
