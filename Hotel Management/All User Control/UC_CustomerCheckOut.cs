@@ -17,7 +17,7 @@ namespace Hotel_Management.All_User_Control
 
         public UC_CustomerCheckOut()
         {
-            InitializeComponent();  
+            InitializeComponent();
 
         }
 
@@ -31,7 +31,17 @@ namespace Hotel_Management.All_User_Control
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-
+            //try
+            //{
+            //    query = "SELECT cust.*, r.* FROM customer cust INNER JOIN rooms r ON cust.roomid = r.roomid WHERE cust.cname LIKE " + txtName.Text; //+ " AND cust.chekout = 'NO'";
+            //    //query = "SELECT * from customer where cname like '\" + txtName.Text + \"%' ";
+            //    DataSet ds = fn.getData(query);
+            //    dataGridView1.DataSource = ds.Tables[0];
+            //}
+            //catch(Exception ex)
+            //{
+            //    debugBox.Text = ex.Message;
+            //}
             string searchText = txtName.Text;
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
@@ -39,7 +49,7 @@ namespace Hotel_Management.All_User_Control
                 //if (string.IsNullOrEmpty(searchText))
 
                 if (row != null) // Check if the row itself is not null
-                {   
+                {
                     try
                     {
                         if (row.Cells["cname"] != null) // Check if the specific cell exists
@@ -76,7 +86,7 @@ namespace Hotel_Management.All_User_Control
             }
         }
 
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -86,30 +96,30 @@ namespace Hotel_Management.All_User_Control
         {
             if (txtCName.Text != "")
             {
-                if(MessageBox.Show("Are you Sure?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show("Are you Sure?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     try
                     {
                         String cdate = txtCheckOutDate.Text;
-                        query = "UPDATE customer SET chekout = 'YES', checkout =" + " ' " + cdate + " ' " +"WHERE cid =" + id + " UPDATE rooms SET booked = 'NO' WHERE roomid =' " + int.Parse(txtRoomNo.Text.ToString()) + " ' ";
+                        query = "UPDATE customer SET chekout = 'YES', checkout =" + " ' " + cdate + " ' " + "WHERE cid =" + id + " UPDATE rooms SET booked = 'NO' WHERE roomid =' " + int.Parse(txtRoomNo.Text.ToString()) + " ' ";
                         UC_CustomerCheckOut_Load(this, null);
 
                         fn.setData(query, "Check Out Successfully. ");
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         // Handle the case where the "id" cell is null (optional)
                         // You can log the error or display a message to the user
                         Console.WriteLine("Error: Null reference encountered for 'id' in a row.");
                         Console.WriteLine(ex.Message); // Provides more details about the exception
                     }
-                    
+
 
                 }
             }
             else
             {
-                MessageBox.Show("No Customer Selected.","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No Customer Selected.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

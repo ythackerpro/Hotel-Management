@@ -74,7 +74,7 @@ namespace Hotel_Management
 
                         
                     }
-                    else if (data_set.Tables[0].Rows.Count != 0)
+                    if (data_set.Tables[0].Rows.Count != 0)
                     {
                         labelError.Visible = false;
                         //function.type = "NV";
