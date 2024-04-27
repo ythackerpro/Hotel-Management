@@ -160,6 +160,11 @@ namespace Hotel_Management
             }
             */
         }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }   
     }
 
