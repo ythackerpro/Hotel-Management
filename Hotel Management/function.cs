@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Hotel_Management
 {
     internal class function
     {
-        protected SqlConnection GetConnection()
+        protected SqlConnection GetConnection()    
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = "data source = MSI\\SQLEXPRESS;database=myHotel;integrated security=True";

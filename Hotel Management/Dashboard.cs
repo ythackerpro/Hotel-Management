@@ -79,6 +79,7 @@ namespace Hotel_Management
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+
             uC_AddRoom1.Visible=false;
             uC_CustomerCheckOut1.Visible=false;
             uC_CustomerRegistration1.Visible = false;
@@ -86,6 +87,13 @@ namespace Hotel_Management
             uC_Employee1.Visible=false;
 
             btnAddRoom.PerformClick();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.Show();
         }
     }
 }

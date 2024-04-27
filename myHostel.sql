@@ -11,6 +11,8 @@ use myHotel
 go
 --use table myHotel-ROOM
 
+
+
 create table rooms(
 roomid int Identity(1,1) primary key,
 roomNo varchar(250) not null unique,

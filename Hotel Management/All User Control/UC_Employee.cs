@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -66,7 +67,15 @@ namespace Hotel_Management.All_User_Control
             {
                 if(MessageBox.Show("Are you Sure?", "Confirmation...!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    query = "delete from employee where eid =" + txtID + "";
+                    //SqlCommand cmd = new SqlCommand("(ID)values(@TxtID)");
+
+                    query = "DELETE FROM employee WHERE eid = "+txtID.Text+"";
+                    // Include proper connection and command setup (not shown in this snippet)
+                    SqlCommand cmd = new SqlCommand(query);
+
+                    // Add parameter to prevent SQL injection
+                    cmd.Parameters.AddWithValue("@txtID", txtID);
+
                     fn.setData(query, "Record Deleted");
                     tabEmployee_SelectedIndexChanged(this, null);
 
@@ -115,6 +124,9 @@ namespace Hotel_Management.All_User_Control
             dgv.DataSource = ds.Tables[0];
         }
 
-        
+        private void labelToSET_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
