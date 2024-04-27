@@ -47,5 +47,6 @@ gender varchar(50) not null,
 emailid varchar(120) not null,
 username varchar(150) not null,
 pass varchar(150) not null
+type nvarchar(150) not null,
 );
 
