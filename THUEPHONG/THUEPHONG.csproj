@@ -76,5 +76,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{01fad390-ed7d-4539-8fad-8506f48d7d9a}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer\DataLayer.csproj">
+      <Project>{c28ba420-184d-43cb-a6d0-460256862565}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel Management\Hotel Management.csproj">
+      <Project>{97cb5038-c7b6-4353-a75f-f94a683af064}</Project>
+      <Name>Hotel Management</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
