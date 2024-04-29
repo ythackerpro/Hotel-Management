@@ -59,14 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connect DB\connect.cs" />
-    <Compile Include="Connect DB\Encryptor.cs" />
-    <Compile Include="Connect DB\frmKetNoiDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Connect DB\frmKetNoiDB.Designer.cs">
-      <DependentUpon>frmKetNoiDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,8 +67,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Connect DB\frmKetNoiDB.resx">
-      <DependentUpon>frmKetNoiDB.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

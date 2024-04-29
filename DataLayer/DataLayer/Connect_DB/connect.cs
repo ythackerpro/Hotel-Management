@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace THUEPHONG.Connect_DB
+namespace DataLayer.Connect_DB
 {
     [Serializable]
     public class connect
@@ -52,7 +52,7 @@ namespace THUEPHONG.Connect_DB
             this.database = _database;
         }
 
-        public void ConnectData()
+        public void ConnectData(string fileName)
         {
             //Using các thư viện cần thiết
             if (File.Exists("connectdb.dba"))

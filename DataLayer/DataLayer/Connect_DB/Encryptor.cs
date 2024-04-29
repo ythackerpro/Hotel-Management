@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 
 
-namespace THUEPHONG.Connect_DB
+namespace DataLayer.Connect_DB
 {
     public class Encryptor
     {

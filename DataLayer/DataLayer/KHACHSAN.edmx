@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="myHotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cname" Type="varchar" MaxLength="250" />
+          <Property Name="mobile" Type="bigint" />
+          <Property Name="nationality" Type="varchar" MaxLength="250" />
+          <Property Name="gender" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="varchar" MaxLength="50" />
+          <Property Name="idproof" Type="varchar" MaxLength="250" />
+          <Property Name="checkin" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="checkout" Type="varchar" MaxLength="250" />
+          <Property Name="chekout" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="roomid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ename" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="mobile" Type="bigint" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailid" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rooms">
+          <Key>
+            <PropertyRef Name="roomid" />
+          </Key>
+          <Property Name="TENTANG" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roomNo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="roomType" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="bed" Type="int" Nullable="false" />
+          <Property Name="price" Type="bigint" Nullable="false" />
+          <Property Name="booked" Type="varchar" MaxLength="50" />
+          <Property Name="SONGUOI" Type="int" />
+          <Property Name="TRANGTHAI" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_DatPhong">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cid" Type="int" />
+          <Property Name="roomid" Type="int" />
+          <Property Name="NGAYDAT" Type="datetime" />
+          <Property Name="NGAYTRA" Type="datetime" />
+          <Property Name="SONGAYTHUCO" Type="int" />
+          <Property Name="eid" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_loginRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="myHotelModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rooms" EntityType="Self.rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DatPhong" EntityType="Self.tb_DatPhong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_loginRole" EntityType="Self.tb_loginRole" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="myHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="Int64" />
+          <Property Name="nationality" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idproof" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="checkin" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="checkout" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="chekout" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ename" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mobile" Type="Int64" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emailid" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="roomid" />
+          </Key>
+          <Property Name="TENTANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roomNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roomType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bed" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int64" Nullable="false" />
+          <Property Name="booked" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SONGUOI" Type="Int32" />
+          <Property Name="TRANGTHAI" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_DatPhong">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cid" Type="Int32" />
+          <Property Name="roomid" Type="Int32" />
+          <Property Name="NGAYDAT" Type="DateTime" Precision="3" />
+          <Property Name="NGAYTRA" Type="DateTime" Precision="3" />
+          <Property Name="SONGAYTHUCO" Type="Int32" />
+          <Property Name="eid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_loginRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="rooms" EntityType="Self.room" />
+          <EntitySet Name="tb_DatPhong" EntityType="Self.tb_DatPhong" />
+          <EntitySet Name="tb_loginRole" EntityType="Self.tb_loginRole" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="myHotelModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="myHotelModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="idproof" ColumnName="idproof" />
+                <ScalarProperty Name="checkin" ColumnName="checkin" />
+                <ScalarProperty Name="checkout" ColumnName="checkout" />
+                <ScalarProperty Name="chekout" ColumnName="chekout" />
+                <ScalarProperty Name="roomid" ColumnName="roomid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="myHotelModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="ename" ColumnName="ename" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rooms">
+            <EntityTypeMapping TypeName="myHotelModel.room">
+              <MappingFragment StoreEntitySet="rooms">
+                <ScalarProperty Name="TENTANG" ColumnName="TENTANG" />
+                <ScalarProperty Name="roomid" ColumnName="roomid" />
+                <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+                <ScalarProperty Name="roomType" ColumnName="roomType" />
+                <ScalarProperty Name="bed" ColumnName="bed" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="booked" ColumnName="booked" />
+                <ScalarProperty Name="SONGUOI" ColumnName="SONGUOI" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DatPhong">
+            <EntityTypeMapping TypeName="myHotelModel.tb_DatPhong">
+              <MappingFragment StoreEntitySet="tb_DatPhong">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="roomid" ColumnName="roomid" />
+                <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />
+                <ScalarProperty Name="NGAYTRA" ColumnName="NGAYTRA" />
+                <ScalarProperty Name="SONGAYTHUCO" ColumnName="SONGAYTHUCO" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_loginRole">
+            <EntityTypeMapping TypeName="myHotelModel.tb_loginRole">
+              <MappingFragment StoreEntitySet="tb_loginRole">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -52,7 +52,7 @@ namespace THUEPHONG
             string conn = "server=" + txtServer.Text + "; User ID=" + txtUsername.Text + "; pwd=" + txtPassword.Text + ";";
             SqlConnection con = new SqlConnection(conn);
             con.Open();
-            string qr = "SELECT NAME FROM SYS.DATABASES";
+            string qr = "SELECT * FROM tb_loginRole";
             SqlCommand cmd = new SqlCommand(qr, con);
             IDataReader dr = cmd.ExecuteReader();
             while(dr.Read())

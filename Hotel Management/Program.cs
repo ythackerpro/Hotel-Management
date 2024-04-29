@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using THUEPHONG;
 
 
+
 namespace Hotel_Management
 {
     internal static class Program
@@ -19,7 +20,7 @@ namespace Hotel_Management
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
-            Application.Run(new frmKetNoiDB());
+            Application.Run(new FrmMain());
         }
     }
 }
