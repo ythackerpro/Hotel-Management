@@ -59,14 +59,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Connect DB\connect.cs" />
+    <Compile Include="Connect DB\Encryptor.cs" />
+    <Compile Include="Connect DB\frmKetNoiDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Connect DB\frmKetNoiDB.Designer.cs">
+      <DependentUpon>frmKetNoiDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Connect DB\frmKetNoiDB.resx">
+      <DependentUpon>frmKetNoiDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,10 +109,6 @@
     <ProjectReference Include="..\DataLayer\DataLayer\DataLayer.csproj">
       <Project>{c28ba420-184d-43cb-a6d0-460256862565}</Project>
       <Name>DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hotel Management\Hotel Management.csproj">
-      <Project>{97cb5038-c7b6-4353-a75f-f94a683af064}</Project>
-      <Name>Hotel Management</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -170,9 +170,17 @@
     <Folder Include="Nhân viên\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{01fad390-ed7d-4539-8fad-8506f48d7d9a}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer\DataLayer.csproj">
       <Project>{c28ba420-184d-43cb-a6d0-460256862565}</Project>
       <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\THUEPHONG\THUEPHONG.csproj">
+      <Project>{8a89aeb8-3ecd-4479-b620-d019904b7e59}</Project>
+      <Name>THUEPHONG</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

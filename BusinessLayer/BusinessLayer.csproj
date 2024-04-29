@@ -65,10 +65,6 @@
       <Project>{c28ba420-184d-43cb-a6d0-460256862565}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hotel Management\Hotel Management.csproj">
-      <Project>{97cb5038-c7b6-4353-a75f-f94a683af064}</Project>
-      <Name>Hotel Management</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
